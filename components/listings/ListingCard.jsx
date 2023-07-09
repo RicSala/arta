@@ -23,6 +23,8 @@ const ListingCard = ({
 }) => {
 
 
+    //TODO: to refactor...
+    const resourceInSpanish = listingType === "tattoos" ? "tatuajes" : "tatuadores"
 
     const router = useRouter();
 
@@ -32,6 +34,25 @@ const ListingCard = ({
             label: 'Barcelona'
         }
     }, [])
+
+    if (actionLabel === "Editar") {
+        onAction = (id) => {
+            router.push(`/admin/${resourceInSpanish}/${id}`)
+        }
+    }
+
+    if (secondaryActionLabel === "Eliminar") {
+        onSecondaryAction = (id) => {
+            axios.delete(`/api/${listingType}/${id}`)
+                .then(() => {
+                    router.push(`/admin/tatuajes`)
+                    toast.success("Tatuaje eliminado")
+                })
+                .catch((error) => {
+                    toast.error("Error al eliminar el tatuaje")
+                })
+        }
+    }
 
 
 

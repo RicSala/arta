@@ -23,7 +23,7 @@ const TattooEditPageClient = ({
             category: tattoo.category,
             style: {
                 value: tattoo.style,
-                label: tattoo.style.replace(/_/g, " ")
+                label: tattoo.style?.replace(/_/g, " ")
             }, //REVIEW: is there a way to only send the enum?
             tattooId: tattoo.id,
         }

@@ -19,24 +19,8 @@ const ListingGrid = ({
 
     const router = useRouter();
 
-    if (actionLabel === "Editar") {
-        onAction = (id) => {
-            router.push(`/admin/tatuajes/${id}`)
-        }
-    }
 
-    if (secondaryActionLabel === "Eliminar") {
-        onSecondaryAction = (id) => {
-            axios.delete(`/api/tattoos/${id}`)
-                .then(() => {
-                    router.push(`/admin/tatuajes`)
-                    toast.success("Tatuaje eliminado")
-                })
-                .catch((error) => {
-                    toast.error("Error al eliminar el tatuaje")
-                })
-        }
-    }
+
 
     return (
         <div className="
